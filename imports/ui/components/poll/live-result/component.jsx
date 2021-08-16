@@ -141,11 +141,16 @@ class LiveResult extends PureComponent {
     const { isMeteorConnected, intl, stopPoll, handleBackClick, currentPoll } =
       this.props;
 
-    const { userAnswers, pollStats, currentPollQuestion } = this.state;
+    const { pollStats, currentPollQuestion } = this.state;
+    let { userAnswers } = this.state;
 
     let waiting;
     let userCount = 0;
     let respondedCount = 0;
+
+    if (userAnswers && userAnswers.length > 12) {
+      userAnswers = userAnswers.slice(0, 12);
+    }
 
     if (userAnswers) {
       userCount = userAnswers.length;
