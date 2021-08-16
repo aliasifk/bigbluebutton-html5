@@ -174,8 +174,8 @@ class LiveResult extends PureComponent {
             {waiting ? (
               <span>
                 {`${intl.formatMessage(intlMessages.waitingLabel, {
-                  0: respondedCount > 12 ? 12 : respondedCount,
-                  1: userCount > 12 ? 12 : userCount,
+                  0: respondedCount,
+                  1: userCount,
                 })} `}
               </span>
             ) : (
