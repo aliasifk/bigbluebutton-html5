@@ -62,10 +62,6 @@ class LiveResult extends PureComponent {
       ? [...users, ...responses.map((u) => u.userId)]
       : [...users];
 
-    if (userAnswers && userAnswers.length > 12) {
-      userAnswers = userAnswers.slice(0, 12);
-    }
-
     userAnswers = userAnswers
       .map((id) => usernames[id])
       .map((user) => {
@@ -173,8 +169,8 @@ class LiveResult extends PureComponent {
             {waiting ? (
               <span>
                 {`${intl.formatMessage(intlMessages.waitingLabel, {
-                  0: respondedCount,
-                  1: userCount,
+                  0: respondedCount > 12 ? 12 : respondedCount,
+                  1: userCount > 12 ? 12 : userCount,
                 })} `}
               </span>
             ) : (
